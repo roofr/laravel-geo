@@ -18,6 +18,12 @@
   "require-dev": {
     "phpunit/phpunit": "4.0.*"
   },
+   "repositories": [
+      {
+          "type": "vcs",
+          "url":  "https://github.com/roofr/php-ogc"
+      }
+  ],
   "autoload": {
     "psr-4": {
       "ElevenLab\\GeoLaravel\\": "src/"
