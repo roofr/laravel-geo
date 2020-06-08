@@ -6,6 +6,7 @@ use ElevenLab\GeoLaravel\Database\Query\Builder;
 use ElevenLab\PHPOGC\OGCObject;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Eloquent\Model as IlluminateModel;
+use Illuminate\Support\Arr;
 
 class Model extends IlluminateModel
 {
@@ -151,7 +152,7 @@ class Model extends IlluminateModel
     public function __get($key)
     {
         if(
-            in_array($key, array_flatten($this->geometries)) &&     // if the attribute is a geometry
+            in_array($key, Arr::flatten($this->geometries)) &&     // if the attribute is a geometry
             ! parent::__get($key) instanceof OGCObject &&           // if it wasn't still converted to geo object
             ! parent::__get($key) instanceof Expression &&          // if it is not in DB Expression form
             parent::__get($key) != ""                               // if it is not empty
